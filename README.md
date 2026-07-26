@@ -16,9 +16,11 @@ export NIXOS_SECRETS_PATH=~/nixos/secrets.nix
 
 ```nix
 {
-  githubRunnerToken = "...";
+  githubToken = "...";
 }
 ```
+
+A fine-grained PAT is preferred over a raw runner registration token — the service will auto-refresh its own registration token from it rather than expiring hourly.
 
 There's no SSH key list here — access is via Tailscale SSH, gated by your tailnet's ACL policy (the `ssh` grant), not by keys in this repo. Each operator needs their own tailnet identity granted `ssh` access; that's configured in the Tailscale admin console, not here. See the network model in the `k3s-cluster` README.
 
