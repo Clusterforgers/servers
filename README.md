@@ -16,11 +16,11 @@ export NIXOS_SECRETS_PATH=~/nixos/secrets.nix
 
 ```nix
 {
-  githubToken = "...";
+  githubRunnerToken = "...";
 }
 ```
 
-A fine-grained PAT is preferred over a raw runner registration token — the service will auto-refresh its own registration token from it rather than expiring hourly.
+`githubRunnerToken` is separate from `githubToken` (used elsewhere for general git/nix GitHub auth) — it must be scoped narrowly to the `GymBros` repo with **Administration: Read and write** (that's what registering a self-hosted runner requires), whereas `githubToken` needs broader access across whatever repos you actually clone/fetch. Don't reuse one for the other. A fine-grained PAT is preferred over a raw runner registration token — the service will auto-refresh its own registration token from it rather than expiring hourly.
 
 There's no SSH key list here — access is via Tailscale SSH, gated by your tailnet's ACL policy (the `ssh` grant), not by keys in this repo. Each operator needs their own tailnet identity granted `ssh` access; that's configured in the Tailscale admin console, not here. See the network model in the `k3s-cluster` README.
 
