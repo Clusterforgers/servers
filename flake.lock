@@ -93,11 +93,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1785061127,
-        "narHash": "sha256-teurivnyQJ3pLLQed8js+ayigEDhPnrqldrS5HVPt7c=",
+        "lastModified": 1785062022,
+        "narHash": "sha256-wzXDnoqGHPhq8oq3xRyQrGILyuh5My9gFnk+TLHl4DM=",
         "owner": "Clusterforgers",
         "repo": "k3s-cluster",
-        "rev": "7bb2803b6c8fa3a7a22ad7ef0d8a1877fcd4845e",
+        "rev": "30d26f23a456fa8f865651c7a735ff4862884563",
         "type": "github"
       },
       "original": {
