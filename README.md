@@ -16,12 +16,11 @@ export NIXOS_SECRETS_PATH=~/nixos/secrets.nix
 
 ```nix
 {
-  sshKeys = [ "ssh-ed25519 AAAA... you" "ssh-ed25519 AAAA... your-friend" ];
   githubRunnerToken = "...";
 }
 ```
 
-Both operators' SSH public keys need to be in `sshKeys` — that's what ends up in each server's `authorized_keys` for the key-based build/rebuild path (see the network model in the `k3s-cluster` README for why that's separate from Tailscale SSH).
+There's no SSH key list here — access is via Tailscale SSH, gated by your tailnet's ACL policy (the `ssh` grant), not by keys in this repo. Each operator needs their own tailnet identity granted `ssh` access; that's configured in the Tailscale admin console, not here. See the network model in the `k3s-cluster` README.
 
 ## Adding a new host
 

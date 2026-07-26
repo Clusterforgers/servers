@@ -1,5 +1,5 @@
 { self, ... }: {
-  flake.nixosModules.oracle-configuration = { config, pkgs, secrets, ... }: {
+  flake.nixosModules.oracle-configuration = { config, pkgs, ... }: {
     imports = [ self.nixosModules.oracle-hardware ];
 
     networking.hostName = "oracle";
@@ -11,7 +11,6 @@
       fastfetch
     ];
 
-    users.users.root.openssh.authorizedKeys.keys = secrets.sshKeys;
     users.users.root.shell = pkgs.fish;
   };
 }
