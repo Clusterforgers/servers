@@ -1,13 +1,6 @@
 { self, inputs, ... }:
 let
     system = "x86_64-linux";
-    secretsPath = let p = builtins.getEnv "NIXOS_SECRETS_PATH"; in
-        if p != "" then p
-        else throw "Set NIXOS_SECRETS_PATH to the path of your local secrets.nix (see README)";
-    commonArgs = {
-        inherit inputs;
-        secrets = import secretsPath;
-    };
 in {
     flake.nixosConfigurations.queen = inputs.nixpkgs.lib.nixosSystem {
     inherit system;
