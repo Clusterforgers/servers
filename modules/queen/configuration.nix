@@ -21,6 +21,7 @@
     fileSystems."/mnt/data" = {
       device = "/dev/disk/by-uuid/400dfe4c-a9fa-4316-8f94-0e45c5a9fb8d";
       fsType = "ext4";
+      options = [ "nofail" "x-systemd.device-timeout=30s" ];
     };
 
     users.users.root.shell = pkgs.fish;
