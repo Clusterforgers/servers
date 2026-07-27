@@ -4,7 +4,7 @@ let
 in {
     flake.nixosConfigurations.oracle = inputs.nixpkgs.lib.nixosSystem {
     inherit system;
-    specialArgs = commonArgs;
+    specialArgs = { inherit inputs; };
     modules = [
         self.nixosModules.oracle-configuration
 
