@@ -9,8 +9,7 @@ in {
         self.nixosModules.oracle-configuration
 
         # Kubernetes Features
-        inputs.k3s-cluster.nixosModules.kubernetes-server
-        inputs.k3s-cluster.nixosModules.kubernetes-deployments
+        inputs.k3s-cluster.nixosModules.kubernetes-agent
 
         inputs.home-manager.nixosModules.home-manager
             {

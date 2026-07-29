@@ -9,7 +9,8 @@ in {
         self.nixosModules.queen-configuration
 
         # Kubernetes Features
-        inputs.k3s-cluster.nixosModules.kubernetes-agent
+        inputs.k3s-cluster.nixosModules.kubernetes-server
+        inputs.k3s-cluster.nixosModules.kubernetes-deployments
 
         inputs.home-manager.nixosModules.home-manager
             {

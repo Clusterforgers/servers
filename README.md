@@ -6,21 +6,7 @@ This repo is the actual rebuild target — see that repo's README for the full b
 
 ## Secrets
 
-Nothing secret is committed here. Each host's `default.nix` reads `secrets.nix` from a path you provide via the `NIXOS_SECRETS_PATH` environment variable, e.g.:
-
-```sh
-export NIXOS_SECRETS_PATH=~/nixos/secrets.nix
-```
-
-`secrets.nix` must evaluate to an attrset with at least:
-
-```nix
-{
-  githubRunnerToken = "...";
-}
-```
-
-`githubRunnerToken` is separate from `githubToken` (used elsewhere for general git/nix GitHub auth) — it must be scoped narrowly to the `GymBros` repo with **Administration: Read and write** (that's what registering a self-hosted runner requires), whereas `githubToken` needs broader access across whatever repos you actually clone/fetch. Don't reuse one for the other. A fine-grained PAT is preferred over a raw runner registration token — the service will auto-refresh its own registration token from it rather than expiring hourly.
+Nothing secret is committed here, and no secrets file is currently required by any host config.
 
 There's no SSH key list here — access is via Tailscale SSH, gated by your tailnet's ACL policy (the `ssh` grant), not by keys in this repo. Each operator needs their own tailnet identity granted `ssh` access; that's configured in the Tailscale admin console, not here. See the network model in the `k3s-cluster` README.
 
