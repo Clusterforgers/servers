@@ -3,7 +3,7 @@
     imports = [ self.nixosModules.queen-hardware ];
 
     networking.hostName = "queen";
-    networking.firewall.allowedTCPPorts = [ 80 443 ];
+    networking.firewall.allowedTCPPorts = [ 80 443 25565 ];
     system.stateVersion = "25.05";
 
     programs.fish.enable = true;
