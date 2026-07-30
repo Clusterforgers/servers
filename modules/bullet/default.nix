@@ -1,6 +1,6 @@
 { self, inputs, ... }:
 let
-    system = "aarch64-linux";
+    system = "x86_64-linux";
 in {
     flake.nixosConfigurations.bullet = inputs.nixpkgs.lib.nixosSystem {
     inherit system;
