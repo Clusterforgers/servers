@@ -3,11 +3,17 @@
     imports = [ self.nixosModules.queen-hardware ];
 
     networking.hostName = "queen";
-    networking.firewall.allowedTCPPorts = [ 80 443 25565 ];
+    networking.firewall.allowedTCPPorts = [ 80 443 25565 7881 ];
     # ARK: 7777 game, 7778 (game+1, used internally by the engine), 27015 Steam
     # query. RCON (32330) is deliberately left closed — it doubles as the
     # in-game admin password, reach it over tailscale0 instead.
     networking.firewall.allowedUDPPorts = [ 7777 7778 27015 ];
+    # Stoat voice/video (LiveKit, hostNetwork): 7881 above is RTC over TCP, 50000-50100
+    # RTC over UDP. Signalling (7880) is only opened to pods on this node,
+    # which reach it through the `livekit` Service; the public gets it via
+    # the ingress at wss://stoat.hivemindcloud.dk/livekit.
+    networking.firewall.allowedUDPPortRanges = [ { from = 50000; to = 50100; } ];
+    networking.firewall.interfaces.cni0.allowedTCPPorts = [ 7880 ];
     system.stateVersion = "25.05";
 
     programs.fish.enable = true;
